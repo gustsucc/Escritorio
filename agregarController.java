@@ -45,7 +45,6 @@ public class agregarController implements Initializable {
     private void btnClick(ActionEvent event) throws ParseException  {
         //POST JSON
         Docente X = new Docente(input_nombre.getText(), input_email.getText(), input_nac.getValue());
-        System.out.println(X.toString());
         
         JSONObject requestJSON = (JSONObject) new JSONParser().parse(X.toString());
 

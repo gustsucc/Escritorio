@@ -55,7 +55,6 @@ public class FXMLController implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) throws org.json.simple.parser.ParseException {
         Docente sel = tabla.getSelectionModel().getSelectedItem();
-        System.out.println(sel.getId().toString());
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes/"+sel.getId().toString()))
