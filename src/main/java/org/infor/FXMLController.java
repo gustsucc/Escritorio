@@ -50,14 +50,12 @@ public class FXMLController implements Initializable {
     @FXML
     private void btnClickAction(ActionEvent event) throws ParseException {
         tabla.setItems(getData());
-        lblOut.setText("Hola Estudiantes...");
-        
-
     }
+
     @FXML
     private void eliminar(ActionEvent event) throws org.json.simple.parser.ParseException {
         Docente sel = tabla.getSelectionModel().getSelectedItem();
-        System.out.println(sel.getId().toString());
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes/"+sel.getId().toString()))
         .timeout(Duration.ofMinutes(2)).header("Content-Type", "application/json")
@@ -67,6 +65,7 @@ public class FXMLController implements Initializable {
         .thenApply(HttpResponse::body).join();
 
         if(Respuesta.isEmpty()) System.out.println("Borrado");
+        else System.out.println("Hubo un error");
     }
     @FXML
     private void agregar(ActionEvent event) throws IOException {
