@@ -15,7 +15,7 @@ public class MainApp extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage s) throws IOException {
         stage=s;
-        setRoot("primary","Cliente de Escritorio REST");
+        setRoot("primary","Cliente  REST");
     }
 
     static void setRoot(String fxml) throws IOException {
