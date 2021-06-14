@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" blendMode="DARKEN" nodeOrientation="LEFT_TO_RIGHT" opacity="0.97" prefHeight="328.0" prefWidth="530.0" styleClass="windows7-default" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.infor.FXMLController">
+<AnchorPane id="AnchorPane" blendMode="DARKEN" nodeOrientation="LEFT_TO_RIGHT" opacity="0.97" prefHeight="328.0" prefWidth="530.0" styleClass="windows7-default" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.infor.FXMLControllerGrupo">
     <children>
         <Button layoutX="445.0" layoutY="89.0" onAction="#btnClickAction" prefHeight="26.0" prefWidth="58.0" text="Listar" textFill="#662822" />
         <Label fx:id="lblOut" layoutX="14.0" layoutY="218.0" minHeight="16" minWidth="69" prefHeight="52.0" prefWidth="215.0" />
