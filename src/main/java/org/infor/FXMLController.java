@@ -39,13 +39,13 @@ public class FXMLController implements Initializable {
     @FXML
     private Label lblOut;
     @FXML
-    private TableView<Docente> tabla;
+    private TableView<Grupo> tabla;
     @FXML
-    private TableColumn<Docente,String> nombre;
+    private TableColumn<Grupo,Long> Id;
     @FXML
-    private TableColumn<Docente,String> correo;
+    private TableColumn<Grupo,String> Identificador;
     @FXML
-    private TableColumn<Docente,LocalDate> fecha;
+    private TableColumn<Grupo,String> Gestion;
     
     @FXML
     private void btnClickAction(ActionEvent event) throws ParseException {
@@ -54,10 +54,10 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void eliminar(ActionEvent event) throws org.json.simple.parser.ParseException {
-        Docente sel = tabla.getSelectionModel().getSelectedItem();
+        Grupo sel = tabla.getSelectionModel().getSelectedItem();
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes/"+sel.getId().toString()))
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/Grupo/"+sel.getId().toString()))
         .timeout(Duration.ofMinutes(2)).header("Content-Type", "application/json")
         .DELETE().build();
 
@@ -77,17 +77,17 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        nombre.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
-        correo.setCellValueFactory(cellData -> cellData.getValue().CorreoProperty());
-        fecha.setCellValueFactory(cellData -> cellData.getValue().birthdayProperty());
+        Id.setCellValueFactory(cellData -> cellData.getValue().Id());
+        Identificador.setCellValueFactory(cellData -> cellData.getValue().getIdentificador());
+        Gestion.setCellValueFactory(cellData -> cellData.getValue().getGestion());
     }
     
-    private ObservableList<Docente> getData() throws ParseException {
-        ObservableList<Docente> Data = FXCollections.observableArrayList();
+    private ObservableList<Grupo> getData() throws ParseException {
+        ObservableList<Grupo> Data = FXCollections.observableArrayList();
         HttpClient client = HttpClient.newHttpClient();
         
         HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://localhost:8080/docentes"))
+        .uri(URI.create("http://localhost:8080/Grupo"))
         .timeout(Duration.ofMinutes(2))
         .header("Content-Type", "application/json")
         .build();
@@ -98,16 +98,15 @@ public class FXMLController implements Initializable {
         try {
             JSONObject Datos = (JSONObject) new JSONParser().parse(Respuesta);
             Datos = (JSONObject) Datos.get("_embedded");
-            JSONArray Lista = (JSONArray) Datos.get("docentes");
+            JSONArray Lista = (JSONArray) Datos.get("grupo");
             for (int i=0;i<Lista.size();i++) {
                 JSONObject Item = (JSONObject) Lista.get(i);
                 String cod = ((JSONObject) ((JSONObject) Item.get("_links")).get("self")).get("href").toString();
                 System.out.println(Item);System.out.println(cod);
 
                 Data.add( 
-                    new Docente(Long.parseLong(cod.substring(cod.lastIndexOf("/")+1, cod.length())),
-                        Item.get("nombre").toString(),Item.get("email").toString(),
-                    LocalDate.parse(Item.get("nacimiento").toString().substring(0, 10)))
+                    new Grupo(Long.parseLong(cod.substring(cod.lastIndexOf("/")+1, cod.length())),
+                        Item.get("id").toString(),Item.get("Identificador").toString(),Item.get("Gestion").toString().substring(0, 10)))
                 );
             }
         } catch (org.json.simple.parser.ParseException e) {

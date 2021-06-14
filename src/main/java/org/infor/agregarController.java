@@ -29,15 +29,14 @@ import javafx.stage.Stage;
 
 public class agregarController implements Initializable {
     @FXML
-    TextField input_nombre;
+    TextField input_Id;
     @FXML
-    TextField input_email;
+    TextField input_Identificador;
     @FXML
-    DatePicker input_nac;
+    DatePicker input_Gestion;
     @FXML
     Button btnExit;
-    @FXML
-    ImageView img_doc;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,33 +44,15 @@ public class agregarController implements Initializable {
         
     }
     @FXML
-    private void subir_foto() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Buscar Imagen");
-
-        // Agregar filtros para facilitar la busqueda
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.jpg*",".png"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
-        
-        // Obtener la imagen seleccionada
-        Stage main = (Stage) btnExit.getScene().getWindow();
-        File imgFile = fileChooser.showOpenDialog(main);
-        Image image = new Image("file:" + imgFile.getAbsolutePath());
-            img_doc.setImage(image);
-    }
-    @FXML
     private void btnClick(ActionEvent event) throws ParseException  {
         //POST JSON
-        Docente X = new Docente(input_nombre.getText(), input_email.getText(), input_nac.getValue());
+        Grupo X = new Grupo(input_Id.getText(), input_Identificador.getText(), input_Gestion.getValue());
         
         JSONObject requestJSON = (JSONObject) new JSONParser().parse(X.toString());
 
         HttpClient client = HttpClient.newHttpClient();
         
-        HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes"))
+        HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/Grupo"))
           .header("Content-Type", "application/json")
           .POST(BodyPublishers.ofString(requestJSON.toJSONString()))
           .build();
