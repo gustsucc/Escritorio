@@ -34,7 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+public class FXMLControllerGrupo implements Initializable {
 
     @FXML
     private Label lblOut;
