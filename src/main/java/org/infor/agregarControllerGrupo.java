@@ -27,7 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class agregarController implements Initializable {
+public class agregarControllerGrupo implements Initializable {
     @FXML
     TextField input_Id;
     @FXML
