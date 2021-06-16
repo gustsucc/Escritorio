@@ -12,8 +12,7 @@ public class Grupo {
     public Grupo(Long Id, String Identificador, String Gestion) {
         this.Id = Id;
         this.Identificador = new SimpleStringProperty(Identificador);
-        this.Gestion = new SimpleStringProperty(Gestion);
-       
+        this.Gestion = new SimpleStringProperty(Gestion);  
     }
 
 
@@ -24,14 +23,13 @@ public class Grupo {
     public void setId(Long id) {
         Id = id;
     }
-
     public void setIdentificador(String firstIdentificador) {
         this.Identificador.set(firstIdentificador);
     }
     public String getIdentificador() {
         return Identificador.get();
     }
-    public StringProperty getIdentificador() {
+    public StringProperty getIdentificadorProperty() {
         return Identificador;
     }
 
@@ -42,7 +40,7 @@ public class Grupo {
     public void setGestion(String Gestion) {
         this.Gestion.set(Gestion);
     }
-    public StringProperty getGestion() {
+    public StringProperty getGestionProperty() {
         return Gestion;
     }
 

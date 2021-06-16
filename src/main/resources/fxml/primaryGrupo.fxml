@@ -13,9 +13,8 @@
         <Label fx:id="lblOut" layoutX="14.0" layoutY="218.0" minHeight="16" minWidth="69" prefHeight="52.0" prefWidth="215.0" />
       <TableView fx:id="tabla" layoutX="7.0" layoutY="14.0" prefHeight="290.0" prefWidth="410.0" styleClass="lion-default" stylesheets="@../styles/Styles.css">
         <columns>
-          <TableColumn fx:id="id" prefWidth="93.59997177124023" text="ID" />
           <TableColumn fx:id="ide" prefWidth="131.2000274658203" text="Identificador" />
-            <TableColumn fx:id="gestion" minWidth="0.0" prefWidth="123.20001220703125" text="Gestion" />
+          <TableColumn fx:id="gestion" minWidth="0.0" prefWidth="123.20001220703125" text="Gestion" />
         </columns>
       </TableView>
       <Button fx:id="btnElim" layoutX="445.0" layoutY="146.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />

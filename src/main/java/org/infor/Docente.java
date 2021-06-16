@@ -12,6 +12,15 @@ public class Docente {
     private final StringProperty Name;
 	private final StringProperty correo;
 	private final ObjectProperty<LocalDate> birthday;
+    private String foto;
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public Docente(String name, String correo, LocalDate birthday) {
         this.Name = new SimpleStringProperty(name);
@@ -64,7 +73,8 @@ public class Docente {
 
     @Override
     public String toString() {
-        return "{\"nombre\":\"" + getName() + "\", \"nacimiento\":\"" + getBirthday() + "\", \"email\":\"" + getCorreo() + "\", \"id\":" + id + "}";
+        return "{\"nombre\":\"" + getName() + "\", \"nacimiento\":\"" + getBirthday() + "\", \"email\":\"" + getCorreo() 
+        + "\", \"id\":" + id + ", \"foto\":\""+getFoto()+ "\"}";
     }
     
 }
