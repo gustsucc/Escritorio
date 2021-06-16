@@ -34,18 +34,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class FXMLControllerGrupo implements Initializable {
+public class FXMLController implements Initializable {
 
     @FXML
     private Label lblOut;
     @FXML
     private TableView<Grupo> tabla;
     @FXML
-    private TableColumn<Grupo,Long> Id;
+    private TableColumn<Grupo,String> id;
     @FXML
-    private TableColumn<Grupo,String> Identificador;
+    private TableColumn<Grupo,String> identificador;
     @FXML
-    private TableColumn<Grupo,String> Gestion;
+    private TableColumn<Grupo,String> gestion;
     
     @FXML
     private void btnClickAction(ActionEvent event) throws ParseException {
@@ -55,46 +55,40 @@ public class FXMLControllerGrupo implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) throws org.json.simple.parser.ParseException {
         Grupo sel = tabla.getSelectionModel().getSelectedItem();
-
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/Grupo/"+sel.getId().toString()))
         .timeout(Duration.ofMinutes(2)).header("Content-Type", "application/json")
         .DELETE().build();
-
         String Respuesta =client.sendAsync(request, BodyHandlers.ofString())
         .thenApply(HttpResponse::body).join();
-
         if(Respuesta.isEmpty()) System.out.println("Borrado");
-        else System.out.println("Hubo un error");
+        else System.out.println("Error");
     }
     @FXML
     private void agregar(ActionEvent event) throws IOException {
         Stage stageTheLabelBelongs = (Stage) lblOut.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregar.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregarGrupo.fxml"));
         Parent pane = fxmlLoader.load();
         stageTheLabelBelongs.getScene().setRoot(pane);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Id.setCellValueFactory(cellData -> cellData.getValue().Id());
-        Identificador.setCellValueFactory(cellData -> cellData.getValue().getIdentificador());
-        Gestion.setCellValueFactory(cellData -> cellData.getValue().getGestion());
+        id.setCellValueFactory(cellData -> cellData.getValue().IdProperty());
+        identificador.setCellValueFactory(cellData -> cellData.getValue().IdentificadorProperty());
+        gestion.setCellValueFactory(cellData -> cellData.getValue().GestionProperty());
     }
     
     private ObservableList<Grupo> getData() throws ParseException {
         ObservableList<Grupo> Data = FXCollections.observableArrayList();
-        HttpClient client = HttpClient.newHttpClient();
-        
+        HttpClient client = HttpClient.newHttpClient();   
         HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("http://localhost:8080/Grupo"))
         .timeout(Duration.ofMinutes(2))
         .header("Content-Type", "application/json")
         .build();
-
         String Respuesta = client.sendAsync(request, BodyHandlers.ofString())
         .thenApply(HttpResponse::body).join();
-
         try {
             JSONObject Datos = (JSONObject) new JSONParser().parse(Respuesta);
             Datos = (JSONObject) Datos.get("_embedded");
@@ -103,10 +97,8 @@ public class FXMLControllerGrupo implements Initializable {
                 JSONObject Item = (JSONObject) Lista.get(i);
                 String cod = ((JSONObject) ((JSONObject) Item.get("_links")).get("self")).get("href").toString();
                 System.out.println(Item);System.out.println(cod);
-
                 Data.add( 
-                    new Grupo(Long.parseLong(cod.substring(cod.lastIndexOf("/")+1, cod.length())),
-                        Item.get("id").toString(),Item.get("Identificador").toString(),Item.get("Gestion").toString().substring(0, 10)))
+                    new Grupo(Item.get("id").toString(),Item.get("Identificador").toString(),Item.get("Gestion").toString().substring(0, 10))
                 );
             }
         } catch (org.json.simple.parser.ParseException e) {
