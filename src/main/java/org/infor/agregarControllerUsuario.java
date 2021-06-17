@@ -34,9 +34,7 @@ public class agregarControllerUsuario implements Initializable {
     Button btnExit;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-        
+    public void initialize(URL location, ResourceBundle resources) {        
     }
     @FXML
     private void btnClick(ActionEvent event) throws ParseException{

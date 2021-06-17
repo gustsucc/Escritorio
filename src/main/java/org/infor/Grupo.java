@@ -15,7 +15,6 @@ public class Grupo {
         this.Gestion = new SimpleStringProperty(Gestion);  
     }
 
-
     public Long getId() {
         return Id;
     }
@@ -26,29 +25,29 @@ public class Grupo {
     public void setIdentificador(String firstIdentificador) {
         this.Identificador.set(firstIdentificador);
     }
+
     public String getIdentificador() {
         return Identificador.get();
     }
+
     public StringProperty getIdentificadorProperty() {
         return Identificador;
-    }
-
-    public String getGestion() {
-        return Gestion.get();
     }
 
     public void setGestion(String Gestion) {
         this.Gestion.set(Gestion);
     }
-    public StringProperty getGestionProperty() {
+
+    public String getGestion() {
+        return Gestion.get();
+    }
+    public StringProperty GestionProperty() {
         return Gestion;
     }
 
-
     @Override
     public String toString() {
-        return "Grupo [Gestion=" + Gestion + ", Id=" + Id + ", Identificador=" + Identificador + "]";
+        return "{\"Id\":\"" + getId() + "\", \"Identificador\":\"" + getIdentificador() + "\", \"Gestion\":\"" + getGestion()+"}";
     }
-
-   
+    
 }

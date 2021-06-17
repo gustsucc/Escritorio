@@ -7,11 +7,9 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.text.ParseException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -101,8 +99,7 @@ public class FXMLControllerUsuario implements Initializable {
                 System.out.println(Item);System.out.println(cod);
 
                 Data.add(
-                    new Usuario(cod.substring(cod.substring(cod.lastIndexOf("/")+1, cod.length())),
-                        Item.get("login").toString(),Item.get("clave").toString())
+                    new Usuario(Item.get("login").toString(),Item.get("clave").toString())
                 );
             }
         } catch (org.json.simple.parser.ParseException e) {

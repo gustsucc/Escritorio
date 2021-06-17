@@ -11,11 +11,9 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.text.ParseException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -53,17 +51,14 @@ public class FXMLControllerGrupo implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) throws org.json.simple.parser.ParseException {
         Grupo sel = tabla.getSelectionModel().getSelectedItem();
-
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/Grupo/"+sel.getId().toString()))
         .timeout(Duration.ofMinutes(2)).header("Content-Type", "application/json")
         .DELETE().build();
-
         String Respuesta =client.sendAsync(request, BodyHandlers.ofString())
         .thenApply(HttpResponse::body).join();
-
         if(Respuesta.isEmpty()) System.out.println("Borrado");
-        else System.out.println("Hubo un error");
+        else System.out.println("Error");
     }
     @FXML
     private void agregar(ActionEvent event) throws IOException {
@@ -76,22 +71,19 @@ public class FXMLControllerGrupo implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ide.setCellValueFactory(cellData -> cellData.getValue().getIdentificadorProperty());
-        gestion.setCellValueFactory(cellData -> cellData.getValue().getGestionProperty());
+        gestion.setCellValueFactory(cellData -> cellData.getValue().GestionProperty());
     }
     
     private ObservableList<Grupo> getData() throws ParseException {
         ObservableList<Grupo> Data = FXCollections.observableArrayList();
-        HttpClient client = HttpClient.newHttpClient();
-        
+        HttpClient client = HttpClient.newHttpClient();   
         HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("http://localhost:8080/Grupo"))
         .timeout(Duration.ofMinutes(2))
         .header("Content-Type", "application/json")
         .build();
-
         String Respuesta = client.sendAsync(request, BodyHandlers.ofString())
         .thenApply(HttpResponse::body).join();
-
         try {
             JSONObject Datos = (JSONObject) new JSONParser().parse(Respuesta);
             Datos = (JSONObject) Datos.get("_embedded");
@@ -100,7 +92,6 @@ public class FXMLControllerGrupo implements Initializable {
                 JSONObject Item = (JSONObject) Lista.get(i);
                 String cod = ((JSONObject) ((JSONObject) Item.get("_links")).get("self")).get("href").toString();
                 System.out.println(Item);System.out.println(cod);
-
                 Data.add( 
                     new Grupo(Long.parseLong(cod.substring(cod.lastIndexOf("/")+1, cod.length())),
                         Item.get("Identificador").toString(),Item.get("Gestion").toString().substring(0, 10))
