@@ -9,19 +9,20 @@
 
 <AnchorPane id="AnchorPane" blendMode="DARKEN" prefHeight="276.0" prefWidth="617.0" styleClass="windows7-default" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.infor.FXMLDocente">
     <children>
-        <Button layoutX="223.0" layoutY="232.0" onAction="#btnClickAction" text="Presioname!" textFill="#721e1e" />
         <Label fx:id="lblOut" layoutX="14.0" layoutY="218.0" minHeight="16" minWidth="69" prefHeight="52.0" prefWidth="215.0" />
-      <TableView fx:id="tabla" layoutX="14.0" layoutY="6.0" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="451.0" styleClass="lion-default" stylesheets="@../styles/Styles.css">
+      <TableView fx:id="tabla" layoutX="14.0" layoutY="6.0" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="496.0" styleClass="lion-default" stylesheets="@../styles/Styles.css">
         <columns>
-          <TableColumn fx:id="nombre" prefWidth="73.0" text="Docente" />
-          <TableColumn fx:id="correo" prefWidth="216.0" text="Correo Electronico" />
-            <TableColumn fx:id="fecha" minWidth="0.0" prefWidth="131.0" text="F.Nac." />
+          <TableColumn fx:id="nombre" prefWidth="168.0" text="Nombres" />
+            <TableColumn fx:id="apellidos" prefWidth="75.0" text="Apellidos" />
+          <TableColumn fx:id="correo" prefWidth="148.0" text="Correo Electronico" />
+            <TableColumn fx:id="fecha" minWidth="0.0" prefWidth="110.0" text="F.Nac." />
         </columns>
       </TableView>
       <Button fx:id="btnElim" layoutX="49.0" layoutY="232.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Button fx:id="agreg" layoutX="141.0" layoutY="232.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" />
       <Button layoutX="343.0" layoutY="232.0" mnemonicParsing="false" onAction="#Pant_Grupo" text="Grupo" />
-      <ImageView fx:id="foto" fitHeight="100.0" fitWidth="132.0" layoutX="511.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="500.0" layoutY="36.0" text="Foto" />
+      <ImageView fx:id="foto" fitHeight="100.0" fitWidth="132.0" layoutX="548.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="537.0" layoutY="37.0" text="Foto" />
+      <Button fx:id="usr" layoutX="423.0" layoutY="232.0" mnemonicParsing="false" text="Usuario" />
     </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package org.infor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -10,10 +11,20 @@ import javafx.beans.property.StringProperty;
 public class Docente {
     private Long id;
     private final StringProperty Name;
+    private final StringProperty Apellido;
 	private final StringProperty correo;
 	private final ObjectProperty<LocalDate> birthday;
     private String foto;
 
+    public StringProperty ApellidoProperty() {
+        return Apellido;
+    }
+    public String getApellido() {
+        return Apellido.get();
+    }
+    public void setApellido(String LastName) {
+		this.Apellido.set(LastName);
+	}
     public String getFoto() {
         return foto;
     }
@@ -22,27 +33,18 @@ public class Docente {
         this.foto = foto;
     }
 
-    public Docente(String name, String correo, LocalDate birthday) {
-        this.Name = new SimpleStringProperty(name);
-        this.correo = new SimpleStringProperty(correo);
-        this.birthday = new SimpleObjectProperty<LocalDate>(birthday);
+    public Docente() {
+        Name = new SimpleStringProperty("");
+        Apellido = new SimpleStringProperty("");
+        birthday = new SimpleObjectProperty<LocalDate>();
+        correo = new SimpleStringProperty("");
     }
-
-    public Docente(Long id, String name, String correo, LocalDate birthday) {
-        this.id = id;
-        this.Name = new SimpleStringProperty(name);
-        this.correo = new SimpleStringProperty(correo);
-        this.birthday = new SimpleObjectProperty<LocalDate>(birthday);
-    }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return Name.get();
     }

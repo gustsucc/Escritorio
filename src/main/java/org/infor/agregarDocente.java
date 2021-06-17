@@ -47,11 +47,10 @@ public class agregarDocente implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-        
     }
     @FXML
     private void subir_foto() throws IOException {
+        // Crear el Cuadro de Dialogo de selección de Archivo
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar Imagen");
 
@@ -65,14 +64,12 @@ public class agregarDocente implements Initializable {
         // Obtener la imagen seleccionada
         Stage main = (Stage) btnExit.getScene().getWindow();
         File imgFile = fileChooser.showOpenDialog(main);
-        
+        // Cargar la imagen desde el fichero
         FileInputStream fileInputStreamReader = new FileInputStream(imgFile);
-
         byte[] bytes = new byte[(int)imgFile.length()];
         fileInputStreamReader.read(bytes);fileInputStreamReader.close();
-
+        // Codificar en Base64 para incluirla en un Objeto JSON
         img_json = new String(Base64.getEncoder().encodeToString(bytes));
-
         // Cargar imagen desde un String Base64
         ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64.getDecoder().decode(img_json));
         Image img = new Image(inputStream);
@@ -80,13 +77,14 @@ public class agregarDocente implements Initializable {
     }
     @FXML
     private void btnClick(ActionEvent event) throws ParseException  {
-        //POST JSON
-        Docente X = new Docente(input_nombre.getText(), input_email.getText(), input_nac.getValue());
-        X.setFoto(img_json);
+        // Creamos nuestra instancia de Docente con los datos de la TextField
+        Docente X = new Docente();
+        X.setName(input_nombre.getText());X.setApellido(input_apellido.getText());;X.setCorreo(input_email.getText());
+        X.setBirthday(input_nac.getValue());X.setFoto(img_json);
+        // Parseamos nuestro Objeto Docente en un JSON Objetc
         JSONObject requestJSON = (JSONObject) new JSONParser().parse(X.toString());
-
+        // POST JSON
         HttpClient client = HttpClient.newHttpClient();
-        
         HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes"))
           .header("Content-Type", "application/json")
           .POST(BodyPublishers.ofString(requestJSON.toJSONString()))
