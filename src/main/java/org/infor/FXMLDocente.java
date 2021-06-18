@@ -72,6 +72,17 @@ public class FXMLDocente implements Initializable {
         Stage stageTheLabelBelongs = (Stage) lblOut.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregarDocente.fxml"));
         Parent pane = fxmlLoader.load();
+        agregarDocente controlador = (agregarDocente) fxmlLoader.getController();
+        controlador.configurar(true, null);
+        stageTheLabelBelongs.getScene().setRoot(pane);
+    }
+    @FXML
+    private void editar(ActionEvent event) throws IOException {
+        Stage stageTheLabelBelongs = (Stage) lblOut.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregarDocente.fxml"));
+        Parent pane = fxmlLoader.load();
+        agregarDocente controlador = (agregarDocente) fxmlLoader.getController();
+        controlador.configurar(false, tabla.getSelectionModel().getSelectedItem());
         stageTheLabelBelongs.getScene().setRoot(pane);
     }
     @FXML

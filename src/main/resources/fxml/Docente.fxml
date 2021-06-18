@@ -24,5 +24,6 @@
       <ImageView fx:id="foto" fitHeight="100.0" fitWidth="132.0" layoutX="548.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="537.0" layoutY="37.0" text="Foto" />
       <Button fx:id="usr" layoutX="423.0" layoutY="232.0" mnemonicParsing="false" text="Usuario" />
+      <Button fx:id="btnEdit" layoutX="243.0" layoutY="232.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
     </children>
 </AnchorPane>

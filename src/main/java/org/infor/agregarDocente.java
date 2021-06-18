@@ -32,6 +32,9 @@ import javafx.stage.Stage;
 
 public class agregarDocente implements Initializable {
     String img_json="";
+    private Docente X;
+    private Boolean nuevo=true;
+
     @FXML
     TextField input_nombre;
     @FXML
@@ -45,8 +48,22 @@ public class agregarDocente implements Initializable {
     @FXML
     ImageView img_doc;
 
+    public void configurar(Boolean action, Docente D) {
+        nuevo = action; X = D;
+        System.out.println(nuevo);
+        if (nuevo) { X = new Docente(); }
+        else {
+            input_nombre.setText(X.getName());input_apellido.setText(X.getApellido());
+            input_email.setText(X.getCorreo());input_nac.setValue(X.getBirthday());
+            img_json = X.getFoto();
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64.getDecoder().decode(img_json));
+            Image img = new Image(inputStream);
+            img_doc.setImage(img);
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
     }
     @FXML
     private void subir_foto() throws IOException {
@@ -78,17 +95,16 @@ public class agregarDocente implements Initializable {
     @FXML
     private void btnClick(ActionEvent event) throws ParseException  {
         // Creamos nuestra instancia de Docente con los datos de la TextField
-        Docente X = new Docente();
         X.setName(input_nombre.getText());X.setApellido(input_apellido.getText());;X.setCorreo(input_email.getText());
         X.setBirthday(input_nac.getValue());X.setFoto(img_json);
         // Parseamos nuestro Objeto Docente en un JSON Objetc
         JSONObject requestJSON = (JSONObject) new JSONParser().parse(X.toString());
-        // POST JSON
+        // POST y PUT JSON
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/docentes"))
-          .header("Content-Type", "application/json")
-          .POST(BodyPublishers.ofString(requestJSON.toJSONString()))
-          .build();
+                    .header("Content-Type", "application/json")
+                    .POST(BodyPublishers.ofString(requestJSON.toJSONString()))
+                    .build();
         client.sendAsync(req, BodyHandlers.ofString())
           .thenApply(HttpResponse::body).join();
         

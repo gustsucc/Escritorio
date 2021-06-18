@@ -73,8 +73,8 @@ public class Docente {
 
     @Override
     public String toString() {
-        return "{\"nombre\":\"" + getName() + "\", \"nacimiento\":\"" + getBirthday() + "\", \"email\":\"" + getCorreo() 
-        + "\", \"id\":" + id + ", \"foto\":\""+getFoto()+ "\"}";
+        return "{\"nombre\":\"" + getName() + "\", \"apellido\":\""+getApellido()+"\",\"nacimiento\":\"" + getBirthday()
+        + "\", \"email\":\"" + getCorreo()+ "\", \"id\":" + id + ", \"foto\":\""+getFoto()+ "\"}";
     }
     
 }
