@@ -34,10 +34,10 @@ public class Usuario {
     public StringProperty claveProperty() {
 		return clave;
 	}
-
+    
     @Override
     public String toString() {
-        return "Usuario [clave=" + clave + ", login=" + login + "]";
+        return "{\"login\":\"" + getLogin() + "\", \"clave\":\"" + getClave()+"}";
     }
     
     
