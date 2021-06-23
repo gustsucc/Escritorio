@@ -1,19 +1,30 @@
 package org.infor;
 
 import java.time.LocalDate;
+
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class estudiante {
-    private Long id;
+    private final LongProperty RU;
     private final StringProperty Nombre;
     private final StringProperty Apellido;
 	private final StringProperty email;
-	private final ObjectProperty<LocalDate> RU;
     private String foto;
 
+    public LongProperty RUProperty() {
+        return RU;
+    }
+    public Long getRU() {
+        return RU.get();
+    }
+    public void setRU(Long identificador) {
+        RU.set(identificador);
+    }
     public StringProperty ApellidoProperty() {
         return Apellido;
     }
@@ -34,15 +45,11 @@ public class estudiante {
     public estudiante() {
         Nombre = new SimpleStringProperty("");
         Apellido = new SimpleStringProperty("");
-        RU = new SimpleObjectProperty<LocalDate>();
+        RU = new SimpleLongProperty();
         email = new SimpleStringProperty("");
+        foto = "";
     }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
     public String getName() {
         return Nombre.get();
     }
@@ -61,15 +68,7 @@ public class estudiante {
     public StringProperty CorreoProperty() {
 		return email;
 	}
-    public LocalDate getBirthday() {
-		return RU.get();
-	}
-    public ObjectProperty<LocalDate> birthdayProperty() {
-        return RU;
-    }
-    public void setBirthday(LocalDate birthday) {
-		this.RU.set(birthday);
-	}
+    
 
     @Override
     public String toString() {

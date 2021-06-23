@@ -8,7 +8,6 @@ public class Grupo {
     private final StringProperty Identificador;
     private final StringProperty Gestion;
 
-
     public Grupo(Long Id, String Identificador, String Gestion) {
         this.Id = Id;
         this.Identificador = new SimpleStringProperty(Identificador);

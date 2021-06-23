@@ -112,7 +112,7 @@ public class agregarDocente implements Initializable {
     @FXML
     private void regresar(ActionEvent event) throws IOException {
         Stage stageTheLabelBelongs = (Stage) btnExit.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Docente.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/primary.fxml"));
         Parent pane = fxmlLoader.load();
         stageTheLabelBelongs.getScene().setRoot(pane);
     }
