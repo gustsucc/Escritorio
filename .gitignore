@@ -34,3 +34,7 @@ target/classes/org/infor/agregarController.class
 target/classes/org/infor/Docente.class
 target/classes/org/infor/MainApp.class
 target/classes/org/infor/Docente.class
+target/classes/module-info.class
+target/classes/org/infor/estudiante.class
+target/classes/org/infor/Principal.class
+target/classes/styles/Styles.css

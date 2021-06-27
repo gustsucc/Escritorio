@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="600.0" style="-fx-background-color: aqua;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="135.0" layoutY="41.0" text="Nombres" textFill="RED" />
+      <Label layoutX="135.0" layoutY="101.0" text="Apellidos" textFill="RED" />
+      <Label layoutX="135.0" layoutY="164.0" text="Email" textFill="RED" />
+      <Label layoutX="135.0" layoutY="220.0" text="Foto" textFill="RED" />
+      <Label layoutX="139.0" layoutY="333.0" text="RU" textFill="RED" />
+      <TextField layoutX="226.0" layoutY="37.0" />
+      <TextField layoutX="226.0" layoutY="97.0" />
+      <TextField layoutX="226.0" layoutY="160.0" />
+      <TextField layoutX="226.0" layoutY="329.0" />
+      <ImageView fitHeight="109.0" fitWidth="149.0" layoutX="226.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
