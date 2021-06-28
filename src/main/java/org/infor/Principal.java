@@ -52,4 +52,23 @@ public class Principal implements Initializable {
         Parent pane = fxmlLoader.load();
         stageTheLabelBelongs.getScene().setRoot(pane);
     }
+    @FXML
+    private void ListarGrupos(ActionEvent event) throws IOException {
+        Stage stageTheLabelBelongs = (Stage) lblRef.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/primaryGrupo.fxml"));
+        Parent pane = fxmlLoader.load();
+        stageTheLabelBelongs.getScene().setRoot(pane);
+    }
+    @FXML
+    private void NewGrupo(ActionEvent event) throws IOException {
+        Stage stageTheLabelBelongs = (Stage) lblRef.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregarGrupo.fxml"));
+        Parent pane = fxmlLoader.load();
+        stageTheLabelBelongs.getScene().setRoot(pane);
+    }
+    @FXML
+    private void NewMateria(ActionEvent event) {}
+    @FXML
+    private void ListarMaterias(ActionEvent event) {}
+
 }

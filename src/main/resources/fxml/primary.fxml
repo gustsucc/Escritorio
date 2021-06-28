@@ -38,11 +38,11 @@
         </Menu>
             <Menu mnemonicParsing="false" text="Materia">
               <items>
-                <MenuItem mnemonicParsing="false" text="Agregar Materia" />
-                  <MenuItem mnemonicParsing="false" text="Listar Materias" />
+                <MenuItem mnemonicParsing="false" onAction="#NewMateria" text="Agregar Materia" />
+                  <MenuItem mnemonicParsing="false" onAction="#ListarMaterias" text="Listar Materias" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Agregar Grupos" />
-                  <MenuItem mnemonicParsing="false" text="Listar Grupos" />
+                  <MenuItem mnemonicParsing="false" onAction="#NewGrupo" text="Agregar Grupos" />
+                  <MenuItem mnemonicParsing="false" onAction="#ListarGrupos" text="Listar Grupos" />
               </items>
             </Menu>
         <Menu mnemonicParsing="false" text="Sistema">

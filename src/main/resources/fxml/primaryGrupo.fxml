@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" blendMode="DARKEN" nodeOrientation="LEFT_TO_RIGHT" opacity="0.97" prefHeight="328.0" prefWidth="513.0" styleClass="iphone-toolbar" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.infor.FXMLControllerGrupo ">
+<AnchorPane id="AnchorPane" blendMode="DARKEN" nodeOrientation="LEFT_TO_RIGHT" opacity="0.97" prefHeight="328.0" prefWidth="513.0" styleClass="iphone-toolbar" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.infor.FXMLControllerGrupo">
     <children>
         <Button layoutX="402.0" layoutY="164.0" onAction="#btnClickAction" prefHeight="38.0" prefWidth="83.0" styleClass="dark-blue" text="Listar" textFill="#662822" />
         <Label fx:id="lblOut" layoutX="14.0" layoutY="218.0" minHeight="16" minWidth="69" prefHeight="52.0" prefWidth="215.0" />
