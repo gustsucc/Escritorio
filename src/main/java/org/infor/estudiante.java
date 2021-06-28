@@ -1,11 +1,7 @@
 package org.infor;
 
-import java.time.LocalDate;
-
 import javafx.beans.property.LongProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -72,8 +68,8 @@ public class estudiante {
 
     @Override
     public String toString() {
-        return "{\"nombre\":\"" + getName() + "\", \"apellido\":\""+getApellido()+"\",\"nacimiento\":\"" + getBirthday()
-        + "\", \"email\":\"" + getCorreo()+ "\", \"id\":" + id + ", \"foto\":\""+getFoto()+ "\"}";
+        return "{\"nombre\":\"" + getName() + "\", \"apellido\":\""+getApellido()+"\", \"email\":\"" + getCorreo()+
+         "\", \"ru\":" + getRU() + ", \"foto\":\""+getFoto()+ "\"}";
     }
     
 }

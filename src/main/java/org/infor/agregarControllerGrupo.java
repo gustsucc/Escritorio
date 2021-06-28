@@ -1,16 +1,16 @@
 package org.infor;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ResourceBundle;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -24,11 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class agregarControllerGrupo implements Initializable {
@@ -39,18 +35,19 @@ public class agregarControllerGrupo implements Initializable {
     @FXML
     Button btnExit;
     
-    ObservableList list=FXCollections.observableArrayList();
+    ObservableList<String> list=FXCollections.observableArrayList();
     @FXML
     ChoiceBox <String> item;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        gestion();
     }
 
     @FXML
     private void btnClick(ActionEvent event) throws ParseException  {
         //POST JSON
-        Grupo X = new Grupo(input_id.getText(), input_iden.getText(), item.getText());  
+        Grupo X = new Grupo(Long.parseLong(input_id.getText()), input_iden.getText(), item.getValue());  
         JSONObject requestJSON = (JSONObject) new JSONParser().parse(X.toString());
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/Grupo"))
@@ -71,16 +68,15 @@ public class agregarControllerGrupo implements Initializable {
     @FXML
     private void gestion(){
         list.removeAll(list);
-        String a="2010";
-        String b="2011";
-        String c="2012";
-        String d="2013";
-        String e="2014";
-        String f="2015";
-        String g="2016";
-        String h="2017";
-        String i="2018";
-        list.addAll(a,b,c,d,e,f,g,h,i);
-        item.getItems().addAll(list);
+        String a="2015";
+        String b="2016";
+        String c="2017";
+        String d="2018";
+        String e="2019";
+        String f="2020";
+        String g="2021";
+        String h="2022";
+        String i="2023";list.addAll(a,b,c,d,e,f,g,h,i);
+        item.setItems(list);
     }
 }
