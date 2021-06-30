@@ -67,8 +67,18 @@ public class Principal implements Initializable {
         stageTheLabelBelongs.getScene().setRoot(pane);
     }
     @FXML
-    private void NewMateria(ActionEvent event) {}
+    private void NewMateria(ActionEvent event) throws IOException {
+        Stage stageTheLabelBelongs = (Stage) lblRef.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/agregarMateria.fxml"));
+        Parent pane = fxmlLoader.load();
+        stageTheLabelBelongs.getScene().setRoot(pane);
+    }
     @FXML
-    private void ListarMaterias(ActionEvent event) {}
+    private void ListarMaterias(ActionEvent event) throws IOException {
+        Stage stageTheLabelBelongs = (Stage) lblRef.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/primaryMateria.fxml"));
+        Parent pane = fxmlLoader.load();
+        stageTheLabelBelongs.getScene().setRoot(pane);
+    }
 
 }

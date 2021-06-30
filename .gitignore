@@ -38,3 +38,4 @@ target/classes/module-info.class
 target/classes/org/infor/estudiante.class
 target/classes/org/infor/Principal.class
 target/classes/styles/Styles.css
+target/classes/org/infor/FXMLEstudiante.class
