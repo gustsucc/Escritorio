@@ -7,6 +7,20 @@ public class Grupo {
     private Long Id;
     private final StringProperty Identificador;
     private final StringProperty Gestion;
+    private Materia mat;
+    
+    public Materia getMat() {
+        return mat;
+    }
+
+    public void setMat(Materia mat) {
+        this.mat = mat;
+    }
+
+    public Grupo() {
+        this.Identificador = new SimpleStringProperty();
+        this.Gestion = new SimpleStringProperty(); 
+    }
 
     public Grupo(Long Id, String Identificador, String Gestion) {
         this.Id = Id;
@@ -46,7 +60,9 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "{\"Id\":\"" + getId() + "\", \"Identificador\":\"" + getIdentificador() + "\", \"Gestion\":\"" + getGestion()+"}";
+        return "{\"id\":\"" + getId() + "\", \"identificador\":\"" + getIdentificador() + 
+        "\", \"mat\":\"http://localhost:8080/materias/"+getMat().getCodigo()+
+        "\", \"gestion\":\"" + getGestion()+"\"}";
     }
     
 }

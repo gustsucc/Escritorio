@@ -39,3 +39,16 @@ target/classes/org/infor/estudiante.class
 target/classes/org/infor/Principal.class
 target/classes/styles/Styles.css
 target/classes/org/infor/FXMLEstudiante.class
+target/classes/fxml/agregarMateria.fxml
+target/classes/fxml/primaryMateria.fxml
+target/classes/org/infor/agregarControllerMateria.class
+.gitignore
+target/classes/org/infor/FXMLEstudiante.class
+target/classes/org/infor/FXMLEstudiante.class
+target/classes/org/infor/FXMLMateria.class
+target/classes/org/infor/FXMLEstudiante.class
+target/classes/org/infor/FXMLEstudiante.class
+target/classes/org/infor/Materia.class
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/classes/org/infor/FXMLEstudiante.class
